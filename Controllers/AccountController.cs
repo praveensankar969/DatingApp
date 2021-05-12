@@ -43,7 +43,7 @@ namespace API.Controllers
             using var hmac = new HMACSHA256(user.PasswordSalt);
             var loginPasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(login.Password));
             for(int i=0;i<user.PasswordHash.Length;i++){
-                if(user.PasswordHash[i] != loginPasswordHash[i]) return BadRequest("Wring password");
+                if(user.PasswordHash[i] != loginPasswordHash[i]) return BadRequest("Wrong password");
             }
 
             return user;
