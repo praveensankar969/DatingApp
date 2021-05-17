@@ -43,7 +43,7 @@ namespace API
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
             });
-           services.AddCors(options => { options.AddPolicy("Policy1", builder => builder.WithOrigins("https://localhost:4200"));});
+           services.AddCors(options => {options.AddPolicy("Policy1", builder => builder.WithOrigins("https://localhost:4200").AllowAnyHeader().AllowAnyMethod());});
            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options => {
                options.TokenValidationParameters = new TokenValidationParameters{
                    ValidateIssuerSigningKey = true,
